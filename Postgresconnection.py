@@ -8,9 +8,18 @@ Created on Wed Aug  9 20:57:17 2017
 # https://wiki.postgresql.org/wiki/Psycopg2_Tutorial
 
 import psycopg2
+from secrets import secrets
+from os import getenv
+
+secrets.load_env_vars()
+
+#### Connect to local Postgresql server ####
 
 try:
-    conn = psycopg2.connect("dbname='Spyder' user='postgres' host='localhost' password=''")
+    password = getenv('Local_Postgres')
+    ## connect to local postgres
+    con_string = "dbname='Spyder' user='postgres' host='localhost' password={password}".format(password=password)
+    conn = psycopg2.connect(con_string)
 except:
     print("Unable to connect to database")
     
