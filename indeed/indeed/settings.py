@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from os import getenv
 
 # Scrapy settings for indeed project
 #
@@ -19,7 +20,7 @@ DATABASE = {
         'host': 'localhost',
         'port': '5432',
         'username': 'postgres',
-        'password': 'DiabloOverwatchEnd',
+        'password':  getenv('Local_Postgres'),
         'database': 'Spyder'
         }
 
